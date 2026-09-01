@@ -1,0 +1,35 @@
+name: Release checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Validate source, privacy markers, links, fixtures, and ZIP parity
+        shell: pwsh
+        run: ./scripts/Test-Release.ps1
+
+      - name: Verify deterministic archive build
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path .release-check -Force | Out-Null
+          ./scripts/Build-Release.ps1 -OutputPath .release-check/first.zip
+          ./scripts/Build-Release.ps1 -OutputPath .release-check/second.zip
+          $first = (Get-FileHash -Algorithm SHA256 -LiteralPath .release-check/first.zip).Hash
+          $second = (Get-FileHash -Algorithm SHA256 -LiteralPath .release-check/second.zip).Hash
+          if ($first -ne $second) {
+            throw "Release builds are not deterministic: $first != $second"
+          }
+          Write-Host "Deterministic ZIP SHA256 $first"

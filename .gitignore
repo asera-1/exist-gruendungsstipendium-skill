@@ -1,0 +1,35 @@
+# Sensitive applicant and local analysis material
+/tmp/
+/.release-check/
+*.pdf
+*.docx
+*.xlsx
+*.xls
+*.csv
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editors, agents, and operating systems
+/.claude/
+/.codex/
+/.agents/
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Tool caches and logs
+__pycache__/
+.pytest_cache/
+node_modules/
+*.log
+*.tmp
+*.swp
