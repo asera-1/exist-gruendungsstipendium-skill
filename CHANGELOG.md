@@ -4,7 +4,9 @@ All notable public changes to this project are recorded here. The project follow
 
 ## [Unreleased]
 
-No changes yet.
+### Added
+
+- Wide README header artwork for the public repository.
 
 ## [0.1.1] - 2026-09-01
 

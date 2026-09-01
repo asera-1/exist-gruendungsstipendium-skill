@@ -1,5 +1,7 @@
 # EXIST-Gründungsstipendium application skill
 
+![EXIST Application Skill for Claude and ChatGPT/Codex](assets/exist-skill-header.png)
+
 An evidence-grounded AI skill for screening, planning, drafting, and reviewing applications for Germany's EXIST-Gründungsstipendium (EGS). It is designed for Claude-compatible skills and standalone ChatGPT desktop/Codex skills.
 
 > [!IMPORTANT]
